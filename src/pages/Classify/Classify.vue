@@ -29,10 +29,13 @@
 								v-for="item of items"
 								:key="item.id"
 							>
-								<div class="image">
-									<img src="@/images/classify/pro01.jpg" alt="">
-								</div>
-								<p>{{item.text}}</p>
+								<router-link to="/ProDetails">
+									<div class="image">
+										<img src="@/images/classify/pro01.jpg">
+									</div>
+
+									<p>{{item.text}}</p>
+								</router-link>
 							</li>
 						</ul>
 					</li>
@@ -387,7 +390,8 @@
 					click:true
 				})
 				this.rights = new BetterScroll(this.$refs.wrapper,{
-					probeType:3
+					probeType:3,
+                    click:true
 				})
 				
 				this.rights.on("scroll",(props)=>{
