@@ -11,8 +11,11 @@ Vue.config.productionTip = false;
 
 Vue.use(global_menuBar);
 Vue.use(VueTouch, {name: 'v-touch'});
+VueTouch.config.swipe = {
+    threshold: 50 //手指左右滑动距离
+};
 
 new Vue({
-  router,
-  render: h => h(App)
+    router,
+    render: h => h(App)
 }).$mount('#app')
