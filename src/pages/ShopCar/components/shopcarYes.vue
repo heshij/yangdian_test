@@ -1,38 +1,39 @@
 <template>
 	<div class="shopcarYes">
 		<ul>
-			<li>
+			<li v-for="(item,index) of proList" :key="item.id">
 				<div class="title">
 					<span class="iconfont">&#xe627;</span>
 					<h3>杭州保税区仓</h3>
 				</div>
-				<v-touch 
-					@swipeleft="swipeleftFn()" 
-					@swiperight="swiperightFn()"
+				<v-touch
+						@swipeleft="swipeleftFn(index)"
+						@swiperight="swiperightFn(index)"
 				>
 					<div class="main" ref="main">
 						<div class="info">
 							<label class="checkbox">
-								<b 
-									:class="isChecked === true ? 'active' : null "
-									@click="isChecked = !isChecked"
+								<b
+										:class="item.isChecked === true ? 'active' : null "
+										@click="item.isChecked = !item.isChecked"
 								></b>
-								<input type="checkbox" :checked="isChecked">
+								<input type="checkbox" :checked="item.isChecked">
 							</label>
-							
-							<img src="@/images/details/head_img.jpg">
-							
+
+							<img :src="item.url">
+
 							<div class="mes">
-								<h3>ChildLife/童年时光婴幼...</h3>
+								<h3>{{item.title}}</h3>
 								<div>
 									<button class="reduice">-</button>
 									<input type="text" class="text">
 									<button class="add">+</button>
 								</div>
 							</div>
-							
-							<p class="price">118</p>
+
+							<p class="price">{{item.price}}</p>
 						</div>
+
 						<div class="remove">删除</div>
 					</div>
 				</v-touch>
@@ -41,22 +42,58 @@
 	</div>
 </template>
 <script>
-	export default {
-		name:"shopcarYes",
-		data(){
-			return{
-				isChecked:false
-			}
-		},
-		methods:{
-			swipeleftFn(){
-				this.$refs.main.className = 'left'
-			},
-			swiperightFn(){
-				this.$refs.main.className = 'main'
-			}
-		}
-	}
+    export default {
+        name:"shopcarYes",
+        data(){
+            return{
+                proList:[
+                    {
+                        id:1,
+                        isChecked:false,
+                        title:"ChildLife/童年时光婴幼...",
+                        price:"118",
+                        url:require("@/images/details/head_img.jpg")
+                    },
+                    {
+                        id:2,
+                        isChecked:false,
+                        title:"ChildLife/童年时光婴幼...",
+                        price:"118",
+                        url:require("@/images/details/head_img.jpg")
+                    },
+                    {
+                        id:3,
+                        isChecked:false,
+                        title:"ChildLife/童年时光婴幼...",
+                        price:"118",
+                        url:require("@/images/details/head_img.jpg")
+                    },
+                    {
+                        id:4,
+                        isChecked:false,
+                        title:"ChildLife/童年时光婴幼...",
+                        price:"118",
+                        url:require("@/images/details/head_img.jpg")
+                    },
+                    {
+                        id:5,
+                        isChecked:false,
+                        title:"ChildLife/童年时光婴幼...",
+                        price:"118",
+                        url:require("@/images/details/head_img.jpg")
+                    }
+                ]
+            }
+        },
+        methods:{
+            swipeleftFn(index){
+                this.$refs.main[index].className = 'left'
+            },
+            swiperightFn(index){
+                this.$refs.main[index].className = 'main'
+            }
+        }
+    }
 </script>
 <style scoped>
 .shopcarYes ul li{
