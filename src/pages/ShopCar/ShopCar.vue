@@ -8,7 +8,7 @@
             </div>
         </div>
 		<div class="main">
-			<shopcarYes v-if="bool"></shopcarYes>
+			<shopcarYes v-if="bool" :proItemsNo="proItemsNo"></shopcarYes>
 			<shopcarNo v-else></shopcarNo>
 		</div>
 		<MenuBar></MenuBar>

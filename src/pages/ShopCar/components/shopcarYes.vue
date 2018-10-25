@@ -1,6 +1,6 @@
 <template>
     <div class="shopcarYes">
-        <ul ref="aaa">
+        <ul >
             <li v-for="(item,index) of proList" :key="item.id">
                 <div class="title">
                     <span class="iconfont">&#xe627;</span>
@@ -105,43 +105,41 @@
                 this.$refs.main[index].className = 'main'
             },
             allChecked() {
-                var that = this
-                this.proList.forEach(function (item, i) {
-                    that.proList[i].checked = true
+                this.proList.forEach((item, i) =>{
+                    this.proList[i].checked = true
                 })
             },
             remove(i) {
-                this.proList.splice(i, 1)
+                this.proList.splice(i, 1);
                 localStorage.setItem("proItems", JSON.stringify(this.proList))
-            }
-        },
-        mounted() {
-            if (localStorage.getItem("proItems")) {
-                var pro = JSON.parse(localStorage.getItem("proItems"))
-                this.proList = pro
-            } else {
-                this.$emit("proItemsNo")
             }
         },
         computed: {
             allTotal() {
-                var total = 0
-                var that = this
-                this.proList.forEach(function (item, i) {
-                    if (that.proList[i].checked) {
-                        total += that.proList[i].PorPrice * that.proList[i].ProNums
+                let total = 0;
+                this.proList.forEach((item, i) =>{
+                    if (this.proList[i].checked) {
+                        total += this.proList[i].PorPrice * this.proList[i].ProNums
                     }
-                })
+                });
                 return total
             },
             isChecked() {
-                var bool = true
-                this.proList.forEach(function (item, i) {
+                let bool = true;
+                this.proList.forEach( (item, i) => {
                     if (item.checked === false) {
                         bool = false
                     }
-                })
+                });
                 return bool
+            }
+        },
+        mounted() {
+            if (localStorage.getItem("proItems")) {
+                let pro = JSON.parse(localStorage.getItem("proItems"));
+                this.proList = pro
+            } else {
+                this.$emit("proItemsNo")
             }
         }
     }

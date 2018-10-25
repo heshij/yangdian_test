@@ -76,7 +76,6 @@
 				}
 			},
 			sub(){
-                var that = this
 				var proItems = {
                     "id":this.id,
 					"checked":false,
@@ -93,7 +92,11 @@
 		},
         mounted(){
             if(localStorage.getItem("proItems")){
-                this.arr = JSON.parse(localStorage.getItem("proItems"))
+                this.arr = JSON.parse(localStorage.getItem("proItems"));
+                this.id = JSON.parse(localStorage.getItem("proItems")).id
+                //console.log(JSON.parse(localStorage.getItem("proItems")));
+                //this.id = JSON.parse(localStorage.getItem("proItems"))[0].id;
+                //console.log(this.id);
             }
         }
 	}
