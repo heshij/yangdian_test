@@ -52,7 +52,9 @@
 				imgUrl:require("@/images/details/head_img.jpg"),
 				price:445,
 				title:this.value,
-				arr:[]
+				arr:[],
+                proItems:{},
+                id:1
 			}
 		},
 		methods:{
@@ -74,18 +76,26 @@
 				}
 			},
 			sub(){
+                var that = this
 				var proItems = {
+                    "id":this.id,
 					"checked":false,
 					"ImgUrl":this.imgUrl,
 					"ProTitle":this.title,
 					"ProNums":this.number,
 					"PorPrice":this.price
-				}
-				this.arr.push(proItems)
-				localStorage.setItem("proItems",JSON.stringify(this.arr))
-				this.$emit('close')
+				};
+				this.arr.push(proItems);
+				localStorage.setItem("proItems",JSON.stringify(this.arr));
+				this.$emit('close');
+                this.id++
 			}
-		}
+		},
+        mounted(){
+            if(localStorage.getItem("proItems")){
+                this.arr = JSON.parse(localStorage.getItem("proItems"))
+            }
+        }
 	}
 </script>
 <style scoped>

@@ -1,10 +1,12 @@
 <template>
 	<div class="ShopCar">
-		<div class="header">
-			<span class="return iconfont">&#xe6b0;</span>
-			<h1>购物车</h1>
-			<span></span>
-		</div>
+		<div class="top">
+            <div class="header">
+                <span class="return iconfont">&#xe6b0;</span>
+                <h1>购物车</h1>
+                <span></span>
+            </div>
+        </div>
 		<div class="main">
 			<shopcarYes v-if="bool"></shopcarYes>
 			<shopcarNo v-else></shopcarNo>
@@ -32,10 +34,22 @@
             }else{
                 this.bool = false
             }
+        },
+        methods:{
+            proItemsNo(){
+                this.bool = false
+            }
         }
 	}
 </script>
 <style scoped>
+    .top{
+        width: 750px;
+        height: 95px;
+        position: fixed;
+        top: 0;
+        right: 0;
+    }
 	.header{
 		height: 95px;
 		background: #ff9900;
