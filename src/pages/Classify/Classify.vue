@@ -411,13 +411,6 @@
 				// console.log(this.listHeight)
 			}
 		},
-		mounted(){
-			var that = this
-			this.$nextTick(function(){
-				that.initScroll()
-				that.getHeight()
-			})
-		},
         computed:{
             active(){
                 for(var i = 0; i<this.listHeight.length-1; i++){
@@ -432,7 +425,14 @@
                     }
                 }
             }
-        }
+        },
+		mounted(){
+			var that = this
+			this.$nextTick(function(){
+				that.initScroll()
+				that.getHeight()
+			})
+		}
 	}
 </script>
 <style scoped>
