@@ -1,31 +1,31 @@
 <template>
 	<div class="Classify">
-		
+
 		<div class="header">
 			<Search class="search"></Search>
 		</div>
-		
+
 		<div class="main">
 			<div class="slideBar" ref="slideBar">
 				<ul>
-					<li  
+					<li
 						v-for="(item,index) of slideBarList"
 						:key="index"
-						:class="index === active ? 'on' : null "
+                        :class="{on:index === active}"
 						@click="handleClick(index,$event)"
 					>{{item}}</li>
 				</ul>
 			</div>
 			<div class="wrapper" ref="wrapper">
 				<ul class="wrapper-ul">
-					<li class="wrapper-li" 
+					<li class="wrapper-li"
 						v-for="(items,index) of proList"
 						:key="index"
 						ref="wrapperList"
 					>
 						<ul class="pro-items">
-							<li 
-								class="pro-item" 
+							<li
+								class="pro-item"
 								v-for="item of items"
 								:key="item.id"
 							>
@@ -42,7 +42,7 @@
 				</ul>
 			</div>
 		</div>
-		
+
 		<MenuBar></MenuBar>
 	</div>
 </template>
@@ -56,7 +56,6 @@
 		},
 		data(){
 			return{
-				active:0,
 				scrollY:0,
 				slideBarList:["母婴专区","美妆护肤","家具生活","食品营养","全球直邮"],
 				listHeight:[],
@@ -393,7 +392,7 @@
 					probeType:3,
                     click:true
 				})
-				
+
 				this.rights.on("scroll",(props)=>{
 					this.scrollY = Math.abs(Math.round(props.y))
 					// console.log(props)
@@ -401,7 +400,7 @@
 			},
 			getHeight(){
 				var itemHeight = this.$refs.wrapperList
-				var height = 0 
+				var height = 0
 				this.listHeight.push(height)
 				var that = this
 				// console.log(itemHeight)
@@ -418,7 +417,22 @@
 				that.initScroll()
 				that.getHeight()
 			})
-		}
+		},
+        computed:{
+            active(){
+                for(var i = 0; i<this.listHeight.length-1; i++){
+                    var h1 = this.listHeight[i]
+                    var h2 = this.listHeight[i+1]
+
+                    if(this.scrollY >= h1 && this.scrollY < h2){
+                        return i
+                    }
+                    if(this.scrollY >= this.listHeight[this.listHeight.length-1]){
+                        return 0
+                    }
+                }
+            }
+        }
 	}
 </script>
 <style scoped>
