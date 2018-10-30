@@ -30,13 +30,23 @@
                  this.$store.commit("add")
              }
          }*/
-        computed: mapState([
+        /*computed: mapState([
             'count'
         ]),
         methods: {
             add() {
                 this.$store.commit("add")
             }
+        }*/
+        methods:{
+            add() {
+                this.$store.commit("add")
+            }
+        },
+        computed:{
+            ...mapState([
+                'count'
+            ])
         }
     }
 </script>

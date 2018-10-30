@@ -4,7 +4,7 @@ import Vuex from 'vuex'
 Vue.use(Vuex);
 export default new Vuex.Store({
     state:{
-        count: 100
+        count: 1000
     },
     mutations:{
         add(state){
