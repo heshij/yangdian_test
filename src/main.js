@@ -6,6 +6,7 @@ import VueTouch from 'vue-touch'
 import 'lib-flexible/flexible.js'
 import './style/common.css'
 import './style/iconfont.css'
+import store from './store/index.js'
 
 Vue.config.productionTip = false;
 
@@ -17,5 +18,6 @@ VueTouch.config.swipe = {
 
 new Vue({
     router,
+    store,
     render: h => h(App)
 }).$mount('#app')
