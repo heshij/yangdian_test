@@ -1,6 +1,6 @@
 <template>
 	<div class="User">
-		我
+		<router-link to="/login">你还没有登录，点我登录</router-link>
 		<MenuBar></MenuBar>	
 	</div>
 </template>
