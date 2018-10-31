@@ -11,5 +11,17 @@ module.exports = {
                 })]
             }
         }
+    },
+    devServer: {
+        /*before(app) {
+            app.get('/api/homeJson', function(req, res){
+                res.json({
+                    errno: 0,
+                    data: homeJson
+                })
+            })
+        },*/
+        host: '0.0.0.0',
+        port: 8080
     }
 }
